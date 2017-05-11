@@ -6,12 +6,12 @@ using UnityEngine.SceneManagement;
 public class StartupManager : MonoBehaviour {
 
 	// Use this for initialization
-	private IEnumerator Start () {
-		while (!LocalizationManager.instance.GetIsReady())
-		{
-			yield return null;
-		}
+	// private IEnumerator Start () {
+		// while (!LocalizationManager.instance.GetIsReady())
+		// {
+		// 	yield return null;
+		// }
 
-		SceneManager.LoadScene("MenuScreen");
-	}
+		// SceneManager.LoadScene("MenuScreen");
+	// }
 }

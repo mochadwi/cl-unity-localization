@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using System.IO;
 
 public class LocalizationManager : MonoBehaviour {
@@ -49,6 +50,8 @@ public class LocalizationManager : MonoBehaviour {
 		}
 
 		isReady = true;
+
+		SceneManager.LoadScene("MenuScreen");
 	}
 
 	public string GetLocalizedValue(string key)
@@ -60,6 +63,11 @@ public class LocalizationManager : MonoBehaviour {
 		}
 
 		return result;
+	}
+
+	public void SetIsReady(bool condition)
+	{
+		isReady = condition;
 	}
 
 	public bool GetIsReady()
