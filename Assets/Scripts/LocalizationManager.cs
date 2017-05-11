@@ -5,11 +5,27 @@ using System.IO;
 
 public class LocalizationManager : MonoBehaviour {
 
+	public static LocalizationManager instance;
+
 	private Dictionary<string, string> localizedText;
 
+	private bool isReady = false;
+
 	// Use this for initialization
-	void Start () {
-		
+	/// <summary>
+	/// Awake is called when the script instance is being loaded.
+	/// </summary>
+	void Awake()
+	{
+		if (instance == null)
+		{
+			instance = this;
+		} else if (instance != this)
+		{
+			Destroy(gameObject);
+		}
+
+		DontDestroyOnLoad(gameObject);
 	}
 
 	public void LoadLocalizationText(string fileName)
@@ -32,5 +48,12 @@ public class LocalizationManager : MonoBehaviour {
 		{
 			Debug.LogError("Cannot find file!");
 		}
+
+		isReady = true;
+	}
+
+	public bool GetIsReady()
+	{
+		return isReady;
 	}
 }
