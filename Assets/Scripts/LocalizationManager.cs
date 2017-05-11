@@ -6,10 +6,9 @@ using System.IO;
 public class LocalizationManager : MonoBehaviour {
 
 	public static LocalizationManager instance;
-
 	private Dictionary<string, string> localizedText;
-
 	private bool isReady = false;
+	private string missingTextString = "Localized text not found";
 
 	// Use this for initialization
 	/// <summary>
@@ -50,6 +49,17 @@ public class LocalizationManager : MonoBehaviour {
 		}
 
 		isReady = true;
+	}
+
+	public string GetLocalizedValue(string key)
+	{
+		string result = missingTextString;
+		if (localizedText.ContainsKey(key))
+		{
+			result = localizedText[key];
+		}
+
+		return result;
 	}
 
 	public bool GetIsReady()
